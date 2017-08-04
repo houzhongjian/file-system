@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 )
 
-//文件系统路径.
+//文件系统存储根路径.
 const FILE_SYSTEM_PATH = "/file/"
 
 //文件存放路径演示:/assets/2017/08/03/12312112423.jpg.
