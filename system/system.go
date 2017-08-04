@@ -5,6 +5,7 @@ import (
 	"time"
 	"os"
 	"log"
+	"io/ioutil"
 )
 
 //文件系统路径.
@@ -42,4 +43,13 @@ func IsExist(path string) bool {
 	}
 
 	return fileInfo.IsDir()
+}
+
+//创建文件.
+func CreateFile(path string, by []byte) bool {
+	if err := ioutil.WriteFile(path, by, os.ModePerm); err != nil {
+		log.Printf("%+v\n", err)
+		return false
+	}
+	return true
 }
