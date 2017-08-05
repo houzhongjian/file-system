@@ -5,6 +5,8 @@ import (
 	"log"
 	"net/http"
 	"bytes"
+	"time"
+	"fmt"
 )
 
 func main() {
@@ -21,6 +23,7 @@ func main() {
 	}
 
 	client := http.Client{}
+	req.Header.Set("name", fmt.Sprintf("%d.jpg", time.Now().Unix()))
 	resp, err := client.Do(req)
 	if err != nil {
 		log.Printf("%+v\n", err)
