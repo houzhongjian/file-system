@@ -1,11 +1,20 @@
 package main
 
-import "net/http"
+import (
+	"net/http"
+	"log"
+)
 
 func ServHTTP() {
-	http.HandleFunc("/notice", HandleNotice)
+	http.HandleFunc("/slave/notice", HandleSlaveNotice)
+	if err := http.ListenAndServe(":8888", nil); err != nil {
+		log.Printf("%+v\n", err)
+		return
+	}
 }
 
-func HandleNotice(w http.ResponseWriter, r *http.Request)  {
+//通知备份.
+func HandleSlaveNotice (w http.ResponseWriter, r *http.Request) {
 
 }
+

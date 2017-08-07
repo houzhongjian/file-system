@@ -8,14 +8,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-type Config struct {
-	Host     string `json:"host"`
-	Dbname   string `json:"db"`
-	User     string `json:"user"`
-	Password string `json:"password"`
-	Sslmode  string `json:"ssl"`
-}
-
 var Db *sql.DB
 
 func InitDbs() {
@@ -35,8 +27,9 @@ func InitDbs() {
 		Db: Db,
 	}
 	srv.Migration(
-		&User{},
-		&Account{},
+		&StorageServer{},
+		&WaitSync{},
+		&SyncMessage{},
 	)
 }
 
